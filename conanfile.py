@@ -4,6 +4,7 @@ import subprocess
 
 
 class fibonacciRecipe(ConanFile):
+
     def get_version_from_script(self):
         script_path = f"{self.recipe_folder}/get-version.sh"
         result = subprocess.run(
@@ -23,10 +24,17 @@ class fibonacciRecipe(ConanFile):
         return version
 
     name = "fibonacci"
+    _version = None  # internal cache for explicitly set version
 
     @property
     def version(self):
+        if self._version is not None:
+            return self._version
         return self.get_version_from_script()
+
+    @version.setter
+    def version(self, value):
+        self._version = value
 
     package_type = "library"
 
