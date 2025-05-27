@@ -1,0 +1,14 @@
+# Conan/CMake generated files
+build/
+
+# CMake user files
+CMakeUserPresets.json
+
+# Git repos for GitLab
+/_gitlab_push
+
+# Vagrant files
+.vagrant/
+
+# Ansible files
+ansible.log
