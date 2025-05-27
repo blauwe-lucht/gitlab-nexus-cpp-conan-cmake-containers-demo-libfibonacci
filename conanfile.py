@@ -1,10 +1,33 @@
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
+import subprocess
 
 
 class fibonacciRecipe(ConanFile):
+    def get_version_from_script(self):
+        script_path = f"{self.recipe_folder}/get-version.sh"
+        result = subprocess.run(
+            ["bash", str(script_path)],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        
+        if result.returncode != 0:
+            raise RuntimeError(f"get-version.sh failed with exit code {result.returncode}: {result.stderr.strip()}")
+        
+        version = result.stdout.strip()
+        if not version:
+            raise RuntimeError("get-version.sh did not return a version string.")
+        
+        return version
+
     name = "fibonacci"
-    version = "1.0.2"
+
+    @property
+    def version(self):
+        return self.get_version_from_script()
+
     package_type = "library"
 
     # Optional metadata
