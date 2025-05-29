@@ -41,6 +41,9 @@ coverage:
     - ./run-coverage.sh
   coverage: '/^TOTAL.*\s+(\d+\%)$/'
   artifacts:
+    paths:
+      - build/Debug/coverage.html
+      - build/Debug/coverage.xml
     reports:
       coverage_report:
         coverage_format: cobertura
