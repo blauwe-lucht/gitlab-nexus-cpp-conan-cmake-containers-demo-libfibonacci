@@ -4,6 +4,7 @@ stages:
   - init
   - build
   - test
+  - coverage
   - upload_to_nexus
 
 init:
@@ -33,6 +34,16 @@ test:
   artifacts:
     reports:
       junit: build/test-results.xml
+
+coverage:
+  stage: coverage
+  script:
+    - ./run-coverage.sh
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: build/Debug/coverage.xml
 
 upload_to_nexus:
   stage: upload_to_nexus
