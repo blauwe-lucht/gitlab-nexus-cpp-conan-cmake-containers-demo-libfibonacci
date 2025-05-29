@@ -39,6 +39,7 @@ coverage:
   stage: coverage
   script:
     - ./run-coverage.sh
+  coverage: '/^TOTAL.*\s+(\d+\%)$/'
   artifacts:
     reports:
       coverage_report:
