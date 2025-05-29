@@ -43,7 +43,6 @@ coverage:
   artifacts:
     paths:
       - build/Debug/coverage.html
-      - build/Debug/coverage.xml
     reports:
       coverage_report:
         coverage_format: cobertura
