@@ -9,7 +9,7 @@ cd build/Debug
 gcovr --root=../.. --exclude='.*test/.*' --cobertura=coverage.xml
 
 # This is needed to be able to view a nice coverage report:
-gcovr --root=../.. --exclude='.*test/.*' --html=coverage.html
+gcovr --root=../.. --exclude='.*test/.*' --html-details=coverage.html
 
 # We also need the output to stdout so GitLab can pick up the overall coverage percentage:
 gcovr --root=../.. --exclude='.*test/.*'
