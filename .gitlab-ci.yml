@@ -42,7 +42,7 @@ coverage:
   coverage: '/^TOTAL.*\s+(\d+\%)$/'
   artifacts:
     paths:
-      - build/Debug/coverage.html
+      - build/Debug/*.html
     reports:
       coverage_report:
         coverage_format: cobertura
