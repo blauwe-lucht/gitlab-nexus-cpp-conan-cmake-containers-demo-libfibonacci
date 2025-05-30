@@ -10,11 +10,15 @@ int Fibonacci::compute(int n) const {
         return n;
     }
 
-    int prev = 0, curr = 1;
+    int previous = 0;
+    int current = 1;
     for (int i = 2; i <= n; ++i) {
-        int next = prev + curr;
-        prev = curr;
-        curr = next;
+        long long next = previous + current;
+        if (next > INT32_MAX) {
+            throw std::overflow_error("Result too big");
+        }
+        previous = current;
+        current = next;
     }
-    return curr;
+    return current;
 }
