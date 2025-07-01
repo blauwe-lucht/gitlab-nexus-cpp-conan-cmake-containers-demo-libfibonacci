@@ -54,7 +54,7 @@ class fibonacciRecipe(ConanFile):
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "test/*"
 
     def build_requirements(self):
-        self.requires("gtest/1.14.0", options={"build_gmock": True})
+        self.requires("gtest/1.14.0")
 
     def config_options(self):
         if self.settings.os == "Windows":
