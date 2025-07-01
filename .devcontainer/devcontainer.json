@@ -6,14 +6,15 @@
     "mounts": [
       "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
     ],
+    "postCreateCommand": "conan install . --build=missing --settings=build_type=Debug",
     "customizations": {
       "vscode": {
         "settings": {
-          "terminal.integrated.shell.linux": "/bin/bash",
-          "cmake.defaultKit": "GCC 11.5.0 x86_64-redhat-linux"
+          "terminal.integrated.shell.linux": "/bin/bash"
         },
         "extensions": [
-          "ms-vscode.cpptools"
+            "ms-vscode.cpptools-extension-pack",
+            "ms-python.python"
         ]
       }
     },
