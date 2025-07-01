@@ -1,8 +1,7 @@
 FROM almalinux:9
 
 RUN dnf install -y \
-      gcc gcc-c++ make \
-      cmake \
+      gcc gcc-c++ gdb make \
       git \
       python3 python3-pip \
       sudo \
@@ -17,8 +16,8 @@ RUN groupadd --gid 1000 vscode \
     && groupadd docker \
     && usermod -aG docker vscode
 
-# install Conan
-RUN pip3 install --no-cache-dir conan
+# install Conan and CMake
+RUN pip3 install --no-cache-dir conan==2.16.1 cmake==3.31.6
 
 # Add ll alias for the vscode user
 RUN echo "alias ll='ls -alF'" >> /home/vscode/.bashrc
